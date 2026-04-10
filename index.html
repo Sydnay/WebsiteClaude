@@ -6,109 +6,143 @@
   <title>Назар — Репетитор по химии | ЕГЭ 70+ за 3 месяца</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;500;600&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            brand: {
-              50: '#fdf8f0',
-              100: '#f9edda',
-              200: '#f2d9b3',
-              300: '#e8bf82',
-              400: '#dea04e',
-              500: '#d4872e',
-              600: '#c06d22',
-              700: '#9f531e',
-              800: '#81431f',
-              900: '#6a381c',
+            ink: {
+              50: '#e8efe8',
+              100: '#c4d4c6',
+              200: '#8fa995',
+              300: '#5a7d62',
+              400: '#3a5e43',
+              900: '#07090a',
+              950: '#040506',
             },
-            warm: {
-              50: '#fefcf8',
-              100: '#fdf6ec',
-              200: '#faecd5',
-              300: '#f5ddb5',
-              400: '#f0cc8e',
+            surface: {
+              1: '#0e1412',
+              2: '#151c18',
+              3: '#1c2620',
+              4: '#222d27',
             },
-            deep: {
-              600: '#2d3e36',
-              700: '#1f2e27',
-              800: '#15201a',
-              900: '#0d150f',
+            neon: {
+              DEFAULT: '#00e5a0',
+              dim: '#00c488',
+              glow: 'rgba(0, 229, 160, 0.15)',
             },
-            teal: {
-              400: '#4a9e8e',
-              500: '#3a8577',
-              600: '#2d6b60',
-              700: '#23554d',
+            amber: {
+              hot: '#ffb800',
+              dim: '#cc9200',
+              glow: 'rgba(255, 184, 0, 0.15)',
+            },
+            fog: {
+              DEFAULT: '#e2ebe8',
+              dim: '#8fa99a',
+              muted: '#4a5e56',
             },
           },
           fontFamily: {
-            display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-            body: ['Manrope', 'sans-serif'],
+            display: ['"Bebas Neue"', '"Arial Narrow"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', '"Courier New"', 'monospace'],
+            body: ['Barlow', 'sans-serif'],
+            condensed: ['"Barlow Condensed"', 'sans-serif'],
+          },
+          letterSpacing: {
+            widest2: '0.25em',
+            tightest: '-0.05em',
           },
         }
       }
     }
   </script>
   <style>
-    * { font-family: 'Manrope', sans-serif; }
-    h1, h2, h3, h4, .font-display { font-family: 'Cormorant Garamond', Georgia, serif; }
+    *, body { font-family: 'Barlow', sans-serif; }
+    .font-display { font-family: 'Bebas Neue', 'Arial Narrow', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+    .font-condensed { font-family: 'Barlow Condensed', sans-serif; }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; background: #07090a; }
 
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #fdf8f0; }
-    ::-webkit-scrollbar-thumb { background: #3a8577; border-radius: 4px; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #07090a; }
+    ::-webkit-scrollbar-thumb { background: #00e5a0; }
 
-    /* Warm noise texture */
-    .noise::before {
+    /* Grid paper background */
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(0,229,160,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,160,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* Scan line effect */
+    .scan-lines::after {
       content: '';
       position: absolute;
       inset: 0;
-      opacity: 0.035;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-size: 256px;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.08) 2px,
+        rgba(0,0,0,0.08) 4px
+      );
       pointer-events: none;
       z-index: 1;
     }
 
-    /* Chemistry hex pattern */
-    .hex-bg {
-      background-image: url("data:image/svg+xml,%3Csvg width='80' height='92' viewBox='0 0 80 92' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 8 L62 22 L62 50 L40 64 L18 50 L18 22 Z' fill='none' stroke='%233a8577' stroke-width='0.6' opacity='0.08'/%3E%3Ccircle cx='40' cy='8' r='2.5' fill='%233a8577' opacity='0.06'/%3E%3Ccircle cx='62' cy='22' r='2.5' fill='%233a8577' opacity='0.06'/%3E%3Ccircle cx='62' cy='50' r='2.5' fill='%233a8577' opacity='0.06'/%3E%3Ccircle cx='40' cy='64' r='2.5' fill='%233a8577' opacity='0.06'/%3E%3Ccircle cx='18' cy='50' r='2.5' fill='%233a8577' opacity='0.06'/%3E%3Ccircle cx='18' cy='22' r='2.5' fill='%233a8577' opacity='0.06'/%3E%3C/svg%3E");
-      background-size: 80px 72px;
+    /* Neon glow effects */
+    .neon-text {
+      color: #00e5a0;
+      text-shadow: 0 0 20px rgba(0, 229, 160, 0.5), 0 0 40px rgba(0, 229, 160, 0.2);
+    }
+    .neon-border {
+      border-color: #00e5a0;
+      box-shadow: 0 0 0 1px rgba(0, 229, 160, 0.2), inset 0 0 20px rgba(0, 229, 160, 0.03);
+    }
+    .amber-text {
+      color: #ffb800;
+      text-shadow: 0 0 20px rgba(255, 184, 0, 0.4), 0 0 40px rgba(255, 184, 0, 0.1);
     }
 
-    /* Molecule bond decoration */
-    .mol-deco {
-      position: absolute;
-      pointer-events: none;
-      opacity: 0.06;
+    /* Marquee */
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
     }
+    .marquee-track { animation: marquee 24s linear infinite; }
 
     /* Animations */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(28px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes scaleIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
-    @keyframes gentleFloat {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-6px) rotate(1deg); }
+    @keyframes scanReveal {
+      from { clip-path: inset(0 100% 0 0); }
+      to { clip-path: inset(0 0% 0 0); }
     }
-    .anim-fade-up {
-      opacity: 0;
-      animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    @keyframes pulse-neon {
+      0%, 100% { box-shadow: 0 0 0 1px rgba(0,229,160,0.3), 0 0 20px rgba(0,229,160,0.1); }
+      50% { box-shadow: 0 0 0 1px rgba(0,229,160,0.6), 0 0 30px rgba(0,229,160,0.2); }
     }
-    .anim-scale-in {
-      opacity: 0;
-      animation: scaleIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
     }
-    .float-slow { animation: gentleFloat 6s ease-in-out infinite; }
+    .cursor-blink::after {
+      content: '_';
+      animation: blink 1s step-end infinite;
+      color: #00e5a0;
+    }
+
+    .anim-fade-up { opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) forwards; }
+    .anim-fade-in { opacity: 0; animation: fadeIn 0.8s ease forwards; }
     .delay-1 { animation-delay: 0.1s; }
     .delay-2 { animation-delay: 0.2s; }
     .delay-3 { animation-delay: 0.3s; }
@@ -116,661 +150,605 @@
     .delay-5 { animation-delay: 0.5s; }
     .delay-6 { animation-delay: 0.6s; }
     .delay-7 { animation-delay: 0.7s; }
+    .delay-8 { animation-delay: 0.8s; }
 
     /* Buttons */
-    .btn-primary {
-      background: linear-gradient(135deg, #3a8577, #2d6b60);
-      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1);
-      box-shadow: 0 4px 14px rgba(58, 133, 119, 0.3), 0 1px 3px rgba(58, 133, 119, 0.15);
+    .btn-neon {
+      background: #00e5a0;
+      color: #07090a;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: transform 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s cubic-bezier(0.22,1,0.36,1);
+      box-shadow: 0 0 20px rgba(0,229,160,0.3), 0 4px 12px rgba(0,229,160,0.15);
     }
-    .btn-primary:hover {
+    .btn-neon:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(58, 133, 119, 0.4), 0 2px 6px rgba(58, 133, 119, 0.2);
+      box-shadow: 0 0 30px rgba(0,229,160,0.5), 0 8px 20px rgba(0,229,160,0.25);
     }
-    .btn-primary:active { transform: translateY(0); box-shadow: 0 2px 8px rgba(58, 133, 119, 0.2); }
-    .btn-primary:focus-visible { outline: 3px solid #4a9e8e; outline-offset: 3px; }
+    .btn-neon:active { transform: translateY(0); }
+    .btn-neon:focus-visible { outline: 2px solid #00e5a0; outline-offset: 3px; }
 
-    .btn-outline {
-      border: 2px solid #2d6b60;
-      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), background 0.25s ease, color 0.25s ease;
+    .btn-ghost {
+      border: 1px solid rgba(0,229,160,0.4);
+      color: #00e5a0;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: transform 0.2s cubic-bezier(0.22,1,0.36,1), border-color 0.2s ease, background 0.2s ease;
     }
-    .btn-outline:hover { background: #2d6b60; color: #fdf8f0; transform: translateY(-2px); }
-    .btn-outline:active { transform: translateY(0); }
-    .btn-outline:focus-visible { outline: 3px solid #3a8577; outline-offset: 3px; }
+    .btn-ghost:hover { border-color: #00e5a0; background: rgba(0,229,160,0.06); transform: translateY(-2px); }
+    .btn-ghost:active { transform: translateY(0); }
+    .btn-ghost:focus-visible { outline: 2px solid #00e5a0; outline-offset: 3px; }
 
-    /* Card */
-    .card-lift {
-      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    /* Cards */
+    .card-dark {
+      background: #0e1412;
+      border: 1px solid rgba(0,229,160,0.1);
+      transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1);
     }
-    .card-lift:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 36px rgba(45, 107, 96, 0.1), 0 4px 12px rgba(45, 107, 96, 0.06);
+    .card-dark:hover {
+      border-color: rgba(0,229,160,0.35);
+      transform: translateY(-3px);
     }
 
-    /* Reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    /* Section label */
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #00e5a0;
     }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    .stat-glow { text-shadow: 0 0 40px rgba(212, 135, 46, 0.25); }
+    /* Diagonal clip on hero photo */
+    .photo-clip {
+      clip-path: polygon(8% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
 
-    .gallery-img {
-      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    /* Number accent */
+    .num-accent {
+      font-family: 'Bebas Neue', sans-serif;
+      color: rgba(0,229,160,0.12);
+      font-size: 8rem;
+      line-height: 1;
+      position: absolute;
+      top: -1rem;
+      left: -1rem;
+      pointer-events: none;
+      user-select: none;
     }
-    .gallery-img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 16px 48px rgba(45, 62, 54, 0.15);
+
+    /* Horizontal rule with label */
+    .rule-label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
+    .rule-label::before, .rule-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(0,229,160,0.15);
+    }
+
+    /* Photo overlay treatment */
+    .photo-treatment::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,229,160,0.08) 0%, transparent 60%),
+                  linear-gradient(to bottom, transparent 40%, rgba(7,9,10,0.7) 100%);
+      mix-blend-mode: normal;
+    }
+
+    /* Stats divider line */
+    .stat-divider {
+      width: 1px;
+      background: rgba(0,229,160,0.2);
+      align-self: stretch;
+    }
+
+    /* Chemical formula styles */
+    sub { font-size: 0.7em; vertical-align: sub; }
   </style>
 </head>
-<body class="bg-warm-50 text-deep-700 overflow-x-hidden">
+<body class="bg-ink-900 text-fog-DEFAULT overflow-x-hidden">
 
-  <!-- ====== SVG Chemistry Decorations (reusable) ====== -->
-  <svg class="hidden">
-    <defs>
-      <!-- Flask -->
-      <symbol id="ico-flask" viewBox="0 0 48 48">
-        <path d="M18 6h12M20 6v14l-10 17a3 3 0 002.6 4.5h22.8a3 3 0 002.6-4.5L28 20V6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M15 34h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
-        <circle cx="22" cy="38" r="1.5" fill="currentColor" opacity="0.4"/>
-        <circle cx="28" cy="36" r="1" fill="currentColor" opacity="0.4"/>
-      </symbol>
-      <!-- Benzene ring -->
-      <symbol id="ico-benzene" viewBox="0 0 48 48">
-        <path d="M24 6 L38 15 L38 33 L24 42 L10 33 L10 15 Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
-        <path d="M24 12 L33 18 L33 30 L24 36 L15 30 L15 18 Z" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
-      </symbol>
-      <!-- Atom -->
-      <symbol id="ico-atom" viewBox="0 0 48 48">
-        <circle cx="24" cy="24" r="4" fill="currentColor" opacity="0.4"/>
-        <ellipse cx="24" cy="24" rx="18" ry="7" fill="none" stroke="currentColor" stroke-width="1.2" transform="rotate(0 24 24)"/>
-        <ellipse cx="24" cy="24" rx="18" ry="7" fill="none" stroke="currentColor" stroke-width="1.2" transform="rotate(60 24 24)"/>
-        <ellipse cx="24" cy="24" rx="18" ry="7" fill="none" stroke="currentColor" stroke-width="1.2" transform="rotate(120 24 24)"/>
-      </symbol>
-      <!-- Molecule -->
-      <symbol id="ico-molecule" viewBox="0 0 64 64">
-        <circle cx="32" cy="16" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/>
-        <circle cx="16" cy="44" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/>
-        <circle cx="48" cy="44" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/>
-        <line x1="28" y1="21" x2="20" y2="39" stroke="currentColor" stroke-width="1.5"/>
-        <line x1="36" y1="21" x2="44" y2="39" stroke="currentColor" stroke-width="1.5"/>
-        <line x1="22" y1="44" x2="42" y2="44" stroke="currentColor" stroke-width="1.5"/>
-      </symbol>
-      <!-- Test tube -->
-      <symbol id="ico-tube" viewBox="0 0 32 64">
-        <rect x="8" y="4" width="16" height="44" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
-        <path d="M8 30 h16" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-        <circle cx="14" cy="40" r="2" fill="currentColor" opacity="0.3"/>
-        <circle cx="19" cy="36" r="1.5" fill="currentColor" opacity="0.3"/>
-      </symbol>
-    </defs>
-  </svg>
-
-  <!-- ============ HEADER / NAV ============ -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-warm-50/80 backdrop-blur-md border-b border-brand-200/40">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-2.5 group" aria-label="На главную">
-        <svg class="w-8 h-8 text-teal-600"><use href="#ico-flask"/></svg>
-        <span class="font-display text-2xl text-deep-700 font-bold tracking-tight">ХимияПро</span>
-      </a>
-      <div class="hidden md:flex items-center gap-8 text-[15px] font-semibold text-deep-600">
-        <a href="#method" class="hover:text-teal-600 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-teal-400 focus-visible:outline-offset-2">Методика</a>
-        <a href="#results" class="hover:text-teal-600 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-teal-400 focus-visible:outline-offset-2">Результаты</a>
-        <a href="#pricing" class="hover:text-teal-600 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-teal-400 focus-visible:outline-offset-2">Цены</a>
-        <a href="#about" class="hover:text-teal-600 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-teal-400 focus-visible:outline-offset-2">Обо мне</a>
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-surface-3" style="background: rgba(7,9,10,0.92); backdrop-filter: blur(12px);">
+    <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-6 h-6 border border-neon-DEFAULT flex items-center justify-center" style="box-shadow: 0 0 8px rgba(0,229,160,0.3);">
+          <span class="font-display text-neon-DEFAULT text-sm leading-none">N</span>
+        </div>
+        <span class="font-condensed font-600 text-fog-DEFAULT tracking-widest text-sm uppercase">Назар</span>
+        <span class="font-mono text-xs text-fog-muted hidden sm:inline">// репетитор по химии</span>
       </div>
-      <a href="#cta" class="btn-primary text-white font-bold text-[14px] sm:text-[15px] px-4 sm:px-6 py-2 sm:py-2.5 rounded-full whitespace-nowrap">
-        Записаться
-      </a>
+      <div class="flex items-center gap-6">
+        <a href="#method" class="hidden md:block font-condensed text-sm font-500 text-fog-dim hover:text-neon-DEFAULT transition-colors duration-200 uppercase tracking-widest">Метод</a>
+        <a href="#results" class="hidden md:block font-condensed text-sm font-500 text-fog-dim hover:text-neon-DEFAULT transition-colors duration-200 uppercase tracking-widest">Результаты</a>
+        <a href="#contact" class="btn-neon px-4 py-1.5 text-sm">Записаться</a>
+      </div>
     </div>
   </nav>
 
-  <!-- ============ HERO ============ -->
-  <section class="relative min-h-screen flex items-center pt-20 noise overflow-hidden">
-    <!-- Warm bg gradients -->
-    <div class="absolute inset-0 bg-gradient-to-br from-warm-100 via-warm-50 to-brand-50/60"></div>
-    <div class="absolute top-20 right-0 w-[500px] h-[500px] bg-gradient-radial from-teal-400/8 to-transparent rounded-full blur-3xl"></div>
-    <div class="absolute bottom-10 left-10 w-80 h-80 bg-gradient-radial from-brand-300/12 to-transparent rounded-full blur-3xl"></div>
+  <!-- HERO -->
+  <section class="relative min-h-screen flex items-center overflow-hidden grid-bg pt-14">
+    <!-- Radial glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(0,229,160,0.06) 0%, transparent 70%);"></div>
 
-    <!-- Chemistry decorations -->
-    <svg class="mol-deco text-teal-600 w-28 h-28 top-28 right-16 hidden lg:block float-slow"><use href="#ico-benzene"/></svg>
-    <svg class="mol-deco text-brand-500 w-20 h-20 bottom-32 left-12 hidden lg:block float-slow" style="animation-delay: -2s"><use href="#ico-atom"/></svg>
-    <svg class="mol-deco text-teal-500 w-16 h-16 top-48 left-[30%] hidden lg:block float-slow" style="animation-delay: -4s"><use href="#ico-molecule"/></svg>
-    <svg class="mol-deco text-brand-300 w-14 h-14 top-[60%] right-[5%] hidden lg:block float-slow" style="animation-delay: -1s"><use href="#ico-flask"/></svg>
-    <svg class="mol-deco text-teal-400 w-12 h-24 bottom-16 left-[40%] hidden lg:block float-slow" style="animation-delay: -5s"><use href="#ico-tube"/></svg>
-    <svg class="mol-deco text-brand-400 w-10 h-10 top-36 left-[8%] hidden xl:block float-slow" style="animation-delay: -3s"><use href="#ico-benzene"/></svg>
-
-    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-0">
-      <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-stretch">
-        <!-- Left: Text -->
-        <div class="flex flex-col justify-center">
-          <div class="anim-fade-up delay-1 inline-flex items-center gap-2 bg-teal-600/10 text-teal-700 text-[15px] font-bold px-4 py-2 rounded-full mb-6">
-            <span class="w-2 h-2 bg-teal-500 rounded-full"></span>
-            Онлайн · ЕГЭ · ОГЭ · Олимпиады
-          </div>
-          <h1 class="anim-fade-up delay-2 font-display text-5xl sm:text-6xl lg:text-7xl text-deep-800 leading-[1.05] tracking-[-0.02em] mb-6 font-bold">
-            ЕГЭ по химии<br>
-            <span class="text-teal-600">75+ за 3 месяца</span>
-          </h1>
-          <p class="anim-fade-up delay-3 text-lg sm:text-xl text-deep-600 leading-[1.75] mb-8 max-w-lg">
-            Сейчас 40–50 баллов? Это нормально — просто пока нет&nbsp;системы. Я помогу выстроить подготовку так, чтобы за&nbsp;3&nbsp;месяца выйти на&nbsp;<strong class="text-deep-800">75+</strong>.
-          </p>
-          <div class="anim-fade-up delay-4 flex flex-wrap gap-4">
-            <a href="#cta" class="btn-primary text-white font-bold text-base px-8 py-4 rounded-full inline-flex items-center gap-2">
-              Бесплатная диагностика
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14m-6-6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            <a href="#method" class="btn-outline text-deep-700 font-bold text-base px-8 py-4 rounded-full">
-              Как я учу
-            </a>
-          </div>
+    <div class="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch w-full" style="grid-template-rows: auto;">
+      <!-- Left: Text -->
+      <div class="flex flex-col justify-center py-8 lg:py-0 lg:pr-12 z-10">
+        <!-- Label -->
+        <div class="section-label mb-6 anim-fade-up">
+          <span class="inline-block w-8 h-px bg-neon-DEFAULT mr-3 align-middle"></span>
+          репетитор по химии · егэ · огэ
         </div>
 
-        <!-- Right: Photo + floating cards -->
-        <div class="relative flex justify-center items-stretch">
-          <div class="anim-scale-in delay-3 relative w-full rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(45,62,54,0.18),0_4px_16px_rgba(45,62,54,0.08)] min-h-[400px]">
-            <img src="photos/main.jpg" alt="Назар — репетитор по химии" class="w-full h-full object-cover" style="object-position: center 20%">
-            <div class="absolute inset-0 bg-gradient-to-t from-deep-900/70 via-deep-800/10 to-transparent"></div>
-            <div class="absolute inset-0 bg-teal-700/8 mix-blend-multiply"></div>
-            <div class="absolute inset-x-0 bottom-0 text-white text-center py-6">
-              <p class="font-display text-2xl font-bold">Назар</p>
-              <p class="text-base text-white/75 font-medium mt-0.5">Химик · Опыт 5+ лет</p>
-            </div>
-          </div>
+        <!-- Main heading -->
+        <h1 class="font-display text-fog-DEFAULT leading-none tracking-tighter mb-4 anim-fade-up delay-1" style="font-size: clamp(3rem, 10vw, 8.5rem);">
+          ХИ<span class="neon-text">МИЯ</span><br>БЕЗ<br>ПАНИКИ
+        </h1>
 
-          <!-- Floating stat cards -->
-          <div class="absolute top-4 -left-3 sm:-left-14 bg-white/95 backdrop-blur-sm rounded-2xl px-3.5 py-2.5 sm:px-5 sm:py-4 shadow-[0_8px_28px_rgba(45,62,54,0.1),0_2px_8px_rgba(45,62,54,0.05)] z-20" style="animation: scaleIn 0.6s cubic-bezier(0.22,1,0.36,1) 0.5s forwards, gentleFloat 6s ease-in-out infinite; opacity: 0;">
-            <p class="font-display text-2xl sm:text-4xl text-brand-500 font-bold stat-glow">100</p>
-            <p class="text-[11px] sm:text-sm font-bold text-deep-600 mt-0.5">Лучший балл</p>
-          </div>
-
-          <div class="absolute top-1/2 -translate-y-1/2 -right-3 sm:-right-16 bg-white/95 backdrop-blur-sm rounded-2xl px-3.5 py-2.5 sm:px-5 sm:py-4 shadow-[0_8px_28px_rgba(45,62,54,0.1),0_2px_8px_rgba(45,62,54,0.05)] z-20" style="animation: scaleIn 0.6s cubic-bezier(0.22,1,0.36,1) 0.6s forwards, gentleFloat 6s ease-in-out -2s infinite; opacity: 0;">
-            <p class="font-display text-2xl sm:text-4xl text-teal-600 font-bold">4.9</p>
-            <p class="text-[11px] sm:text-sm font-bold text-deep-600 mt-0.5">Рейтинг ★</p>
-          </div>
-
-          <div class="absolute bottom-4 -left-2 sm:-left-12 bg-white/95 backdrop-blur-sm rounded-2xl px-3.5 py-2.5 sm:px-5 sm:py-4 shadow-[0_8px_28px_rgba(45,62,54,0.1),0_2px_8px_rgba(45,62,54,0.05)] z-20" style="animation: scaleIn 0.6s cubic-bezier(0.22,1,0.36,1) 0.7s forwards, gentleFloat 6s ease-in-out -4s infinite; opacity: 0;">
-            <p class="font-display text-2xl sm:text-4xl text-teal-600 font-bold">50</p>
-            <p class="text-[11px] sm:text-sm font-bold text-deep-600 mt-0.5">Учеников на 80+</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ STATS BAR ============ -->
-  <section class="relative bg-gradient-to-r from-teal-700 via-teal-600 to-teal-700 noise overflow-hidden">
-    <!-- Chemistry decorations in bar -->
-    <svg class="mol-deco text-white w-24 h-24 -top-4 left-[10%] opacity-[0.04] hidden md:block"><use href="#ico-flask"/></svg>
-    <svg class="mol-deco text-white w-20 h-20 -bottom-4 right-[15%] opacity-[0.04] hidden md:block"><use href="#ico-benzene"/></svg>
-
-    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-14 md:py-16">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center items-start">
-        <div class="reveal">
-          <p class="font-body text-5xl lg:text-6xl text-brand-300 stat-glow font-extrabold leading-none tracking-tight">100</p>
-          <p class="text-white/80 text-base font-bold mt-4 tracking-wide">Лучший балл ЕГЭ</p>
-        </div>
-        <div class="reveal">
-          <p class="font-body text-5xl lg:text-6xl text-brand-300 stat-glow font-extrabold leading-none tracking-tight">50</p>
-          <p class="text-white/80 text-base font-bold mt-4 tracking-wide">Учеников на 80+</p>
-        </div>
-        <div class="reveal">
-          <p class="font-body text-5xl lg:text-6xl text-brand-300 stat-glow font-extrabold leading-none tracking-tight">5+</p>
-          <p class="text-white/80 text-base font-bold mt-4 tracking-wide">Лет преподаю</p>
-        </div>
-        <div class="reveal">
-          <p class="font-body text-5xl lg:text-6xl text-brand-300 stat-glow font-extrabold leading-none tracking-tight">60+</p>
-          <p class="text-white/80 text-base font-bold mt-4 tracking-wide">Отзывов (5.0★)</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PROBLEMS ============ -->
-  <section class="relative py-20 md:py-28 noise hex-bg overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-warm-100/80 via-warm-50 to-warm-100/60"></div>
-    <!-- Chemistry deco -->
-    <svg class="mol-deco text-teal-600 w-32 h-32 -top-4 -right-8 hidden lg:block float-slow"><use href="#ico-molecule"/></svg>
-    <svg class="mol-deco text-brand-400 w-20 h-40 bottom-8 left-6 hidden lg:block float-slow" style="animation-delay:-3s"><use href="#ico-tube"/></svg>
-    <svg class="mol-deco text-teal-500 w-16 h-16 top-[45%] left-[3%] hidden xl:block float-slow" style="animation-delay:-1s"><use href="#ico-atom"/></svg>
-    <svg class="mol-deco text-brand-300 w-14 h-14 bottom-[30%] right-[4%] hidden lg:block float-slow" style="animation-delay:-4s"><use href="#ico-flask"/></svg>
-    <svg class="mol-deco text-teal-400 w-12 h-12 top-[20%] left-[45%] hidden xl:block float-slow" style="animation-delay:-2s"><use href="#ico-benzene"/></svg>
-
-    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-14 reveal">
-        <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl text-deep-800 tracking-[-0.02em] font-bold">
-          Почему застревают на 50–60
-        </h2>
-      </div>
-
-      <!-- Top row: 3 cards -->
-      <div class="grid sm:grid-cols-3 gap-5 mb-5 reveal">
-        <div class="card-lift bg-white/80 backdrop-blur-sm rounded-2xl p-7 shadow-[0_4px_16px_rgba(45,62,54,0.06)] border-l-4 border-rose-400/60">
-          <div class="w-11 h-11 bg-rose-50 rounded-xl flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="font-bold text-deep-800 text-lg mb-1.5">Решают без понимания</h3>
-          <p class="text-[15px] text-deep-600/70 leading-relaxed">Зубрят формулы, но не понимают, почему реакция идёт именно так</p>
-        </div>
-
-        <div class="card-lift bg-white/80 backdrop-blur-sm rounded-2xl p-7 shadow-[0_4px_16px_rgba(45,62,54,0.06)] border-l-4 border-rose-400/60">
-          <div class="w-11 h-11 bg-rose-50 rounded-xl flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="font-bold text-deep-800 text-lg mb-1.5">Путаница в ОВР</h3>
-          <p class="text-[15px] text-deep-600/70 leading-relaxed">Окислительно-восстановительные реакции — главная зона потери баллов</p>
-        </div>
-
-        <div class="card-lift bg-white/80 backdrop-blur-sm rounded-2xl p-7 shadow-[0_4px_16px_rgba(45,62,54,0.06)] border-l-4 border-rose-400/60">
-          <div class="w-11 h-11 bg-rose-50 rounded-xl flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="font-bold text-deep-800 text-lg mb-1.5">Расчёты наугад</h3>
-          <p class="text-[15px] text-deep-600/70 leading-relaxed">Ошибки в вычислениях и оформлении — минус баллы, даже если ход решения верный</p>
-        </div>
-      </div>
-
-      <!-- Bottom row: 2 cards centered -->
-      <div class="grid sm:grid-cols-2 gap-5 sm:max-w-[calc(66.666%+0.625rem)] mx-auto reveal">
-        <div class="card-lift bg-white/80 backdrop-blur-sm rounded-2xl p-7 shadow-[0_4px_16px_rgba(45,62,54,0.06)] border-l-4 border-rose-400/60">
-          <div class="w-11 h-11 bg-rose-50 rounded-xl flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="font-bold text-deep-800 text-lg mb-1.5">Страх перед 2-й частью</h3>
-          <p class="text-[15px] text-deep-600/70 leading-relaxed">Пропускают развёрнутые задания и теряют 20+ баллов просто так</p>
-        </div>
-
-        <div class="card-lift bg-white/80 backdrop-blur-sm rounded-2xl p-7 shadow-[0_4px_16px_rgba(45,62,54,0.06)] border-l-4 border-rose-400/60">
-          <div class="w-11 h-11 bg-rose-50 rounded-xl flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="font-bold text-deep-800 text-lg mb-1.5">Не пишут пробники</h3>
-          <p class="text-[15px] text-deep-600/70 leading-relaxed">Без регулярных пробников непонятно, где пробелы и сколько баллов реально</p>
-        </div>
-      </div>
-
-      <div class="reveal text-center mt-12">
-        <p class="text-xl text-deep-700 font-semibold">Всё это решается. Нужна <span class="text-teal-600 font-bold">система</span>.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ METHOD ============ -->
-  <section id="method" class="relative py-20 md:py-28 noise overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-brand-50/40 via-warm-50 to-warm-100/40"></div>
-    <!-- Chemistry deco -->
-    <svg class="mol-deco text-teal-500 w-24 h-24 top-16 right-12 hidden lg:block float-slow"><use href="#ico-atom"/></svg>
-    <svg class="mol-deco text-brand-400 w-16 h-16 bottom-20 left-20 hidden lg:block float-slow" style="animation-delay:-2s"><use href="#ico-benzene"/></svg>
-    <svg class="mol-deco text-teal-400 w-14 h-28 top-[40%] right-[3%] hidden xl:block float-slow" style="animation-delay:-4s"><use href="#ico-tube"/></svg>
-    <svg class="mol-deco text-brand-300 w-20 h-20 bottom-12 right-[40%] hidden lg:block float-slow" style="animation-delay:-1s"><use href="#ico-molecule"/></svg>
-
-    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16 reveal">
-        <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl text-deep-800 tracking-[-0.02em] font-bold">
-          Как устроены занятия
-        </h2>
-        <p class="text-teal-600 font-bold text-lg mt-4">90% практики, 10% теории</p>
-        <p class="text-deep-600/70 mt-5 max-w-2xl mx-auto leading-[1.75] text-lg">
-          Никакой воды. Каждое занятие — разбор конкретных заданий, алгоритмы решений и работа над ошибками. Раз в месяц — полноценный пробник.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-10 items-center">
-        <!-- Left: photo collage -->
-        <div class="reveal grid grid-cols-2 gap-4">
-          <div class="rounded-2xl overflow-hidden shadow-[0_8px_24px_rgba(45,62,54,0.1)] gallery-img relative h-52">
-            <img src="photos/slide.jpg" alt="Алгоритм — слайд ОВР" class="absolute inset-0 w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-deep-900/30 to-transparent"></div>
-          </div>
-          <div class="rounded-2xl overflow-hidden shadow-[0_8px_24px_rgba(45,62,54,0.1)] gallery-img relative mt-6 h-52">
-            <img src="photos/flasks.jpg" alt="Колбы в лаборатории" class="absolute inset-0 w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-deep-900/30 to-transparent"></div>
-          </div>
-          <div class="rounded-2xl overflow-hidden shadow-[0_8px_24px_rgba(45,62,54,0.1)] gallery-img relative h-52">
-            <img src="photos/students.jpg" alt="Студенты в лаборатории" class="absolute inset-0 w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-deep-900/30 to-transparent"></div>
-          </div>
-          <div class="rounded-2xl overflow-hidden shadow-[0_8px_24px_rgba(45,62,54,0.1)] gallery-img relative mt-6 h-52">
-            <img src="photos/izotop.jpg" alt="Команда Изотоп" class="absolute inset-0 w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-deep-900/30 to-transparent"></div>
-          </div>
-        </div>
-
-        <!-- Right: method points -->
-        <div class="reveal space-y-7">
-          <div class="flex gap-5 items-start">
-            <div class="flex-shrink-0 w-11 h-11 bg-teal-600 rounded-xl flex items-center justify-center mt-0.5">
-              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div>
-              <p class="font-bold text-deep-800 text-lg">Алгоритм на каждый тип задания</p>
-              <p class="text-deep-600/70 mt-1 leading-relaxed text-[15px]">Не «запомни и повтори», а «пойми — и сможешь решить любой вариант».</p>
-            </div>
-          </div>
-
-          <div class="flex gap-5 items-start">
-            <div class="flex-shrink-0 w-11 h-11 bg-teal-600 rounded-xl flex items-center justify-center mt-0.5">
-              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div>
-              <p class="font-bold text-deep-800 text-lg">Разбираем каждую ошибку</p>
-              <p class="text-deep-600/70 mt-1 leading-relaxed text-[15px]">Веду журнал ошибок. Если что-то не получилось — возвращаемся, пока не щёлкнет.</p>
-            </div>
-          </div>
-
-          <div class="flex gap-5 items-start">
-            <div class="flex-shrink-0 w-11 h-11 bg-teal-600 rounded-xl flex items-center justify-center mt-0.5">
-              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div>
-              <p class="font-bold text-deep-800 text-lg">Пробник каждый месяц</p>
-              <p class="text-deep-600/70 mt-1 leading-relaxed text-[15px]">Полноценная репетиция экзамена — чтобы видеть прогресс в цифрах.</p>
-            </div>
-          </div>
-
-          <div class="flex gap-5 items-start">
-            <div class="flex-shrink-0 w-11 h-11 bg-brand-500 rounded-xl flex items-center justify-center mt-0.5">
-              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div>
-              <p class="font-bold text-deep-800 text-lg">Своя система, не чужие шаблоны</p>
-              <p class="text-deep-600/70 mt-1 leading-relaxed text-[15px]">Я выстроил методику за 5&nbsp;лет работы, она проверена результатами моих учеников.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ RESULTS 2025 ============ -->
-  <section id="results" class="relative py-20 md:py-28 noise overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-deep-700 via-deep-600 to-teal-700"></div>
-    <!-- Chemistry deco -->
-    <svg class="mol-deco text-white w-36 h-36 -top-6 -left-10 opacity-[0.03] hidden md:block"><use href="#ico-molecule"/></svg>
-    <svg class="mol-deco text-white w-24 h-24 bottom-10 right-10 opacity-[0.03] hidden md:block"><use href="#ico-flask"/></svg>
-
-    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-14 reveal">
-        <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl text-white tracking-[-0.02em] font-bold">
-          Результаты 2025
-        </h2>
-        <p class="text-white/60 mt-5 max-w-xl mx-auto leading-[1.75] text-lg">
-          Реальные истории моих учеников — от первого пробника до экзамена.
-        </p>
-      </div>
-
-      <!-- Student stories -->
-      <div class="reveal grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
-        <div class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-7 relative">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-11 h-11 bg-gradient-to-br from-brand-400 to-brand-500 rounded-full flex items-center justify-center text-white font-bold text-lg">А</div>
-            <div>
-              <p class="text-white font-bold">Алина, 11 класс</p>
-              <p class="text-white/50 text-sm">Начала с 42 баллов</p>
-            </div>
-          </div>
-          <p class="text-white/75 leading-relaxed text-[15px] mb-4">Пришла в октябре — химия была самым слабым предметом. Путала классы соединений, боялась второй части. За 5 месяцев разобрали всё с нуля. На экзамене получила <strong class="text-brand-300">93 балла</strong> — сама не поверила.</p>
-          <div class="inline-flex items-center gap-1.5 bg-brand-500/20 text-brand-300 font-bold text-sm px-3 py-1.5 rounded-full">
-            42 → 93
-          </div>
-        </div>
-
-        <div class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-7 relative">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-11 h-11 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full flex items-center justify-center text-white font-bold text-lg">Д</div>
-            <div>
-              <p class="text-white font-bold">Дима, 11 класс</p>
-              <p class="text-white/50 text-sm">Начал с 58 баллов</p>
-            </div>
-          </div>
-          <p class="text-white/75 leading-relaxed text-[15px] mb-4">Занимался с другим репетитором, но балл не рос. Пришёл ко мне в январе. Пересобрали органику полностью, отработали ОВР и расчёты. Итог — <strong class="text-brand-300">97 баллов</strong>, лучший результат в потоке.</p>
-          <div class="inline-flex items-center gap-1.5 bg-brand-500/20 text-brand-300 font-bold text-sm px-3 py-1.5 rounded-full">
-            58 → 97
-          </div>
-        </div>
-
-        <div class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-7 relative">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-11 h-11 bg-gradient-to-br from-brand-300 to-brand-500 rounded-full flex items-center justify-center text-white font-bold text-lg">С</div>
-            <div>
-              <p class="text-white font-bold">Соня, 11 класс</p>
-              <p class="text-white/50 text-sm">Начала с 35 баллов</p>
-            </div>
-          </div>
-          <p class="text-white/75 leading-relaxed text-[15px] mb-4">Готовилась сама, но к декабрю поняла, что не вывозит. Пришла почти с нуля — не знала даже таблицу растворимости. Работали интенсивно 3 раза в неделю. Сдала на <strong class="text-brand-300">87 баллов</strong>.</p>
-          <div class="inline-flex items-center gap-1.5 bg-brand-500/20 text-brand-300 font-bold text-sm px-3 py-1.5 rounded-full">
-            35 → 87
-          </div>
-        </div>
-
-        <div class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-7 relative">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-11 h-11 bg-gradient-to-br from-teal-500 to-teal-700 rounded-full flex items-center justify-center text-white font-bold text-lg">М</div>
-            <div>
-              <p class="text-white font-bold">Марк, 11 класс</p>
-              <p class="text-white/50 text-sm">Начал с 51 балла</p>
-            </div>
-          </div>
-          <p class="text-white/75 leading-relaxed text-[15px] mb-4">Хотел в медицинский, нужно было 80+. Главная проблема — задачи на растворы и смеси. Разобрали все типы, прогнали 40+ задач. На ЕГЭ набрал <strong class="text-brand-300">92 балла</strong> и прошёл на бюджет.</p>
-          <div class="inline-flex items-center gap-1.5 bg-brand-500/20 text-brand-300 font-bold text-sm px-3 py-1.5 rounded-full">
-            51 → 92
-          </div>
-        </div>
-
-        <div class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-7 relative">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-11 h-11 bg-gradient-to-br from-brand-400 to-brand-600 rounded-full flex items-center justify-center text-white font-bold text-lg">К</div>
-            <div>
-              <p class="text-white font-bold">Катя, 10 класс</p>
-              <p class="text-white/50 text-sm">Олимпиадница</p>
-            </div>
-          </div>
-          <p class="text-white/75 leading-relaxed text-[15px] mb-4">Готовились к Всеросу по химии. Углубляли неорганику и физхимию. В итоге — призёр регионального этапа. Сейчас продолжаем работать на заключительный.</p>
-          <div class="inline-flex items-center gap-1.5 bg-teal-500/20 text-teal-300 font-bold text-sm px-3 py-1.5 rounded-full">
-            Призёр регионала
-          </div>
-        </div>
-
-        <div class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-7 relative">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-11 h-11 bg-gradient-to-br from-teal-400 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-lg">Р</div>
-            <div>
-              <p class="text-white font-bold">Руслан, 9 класс</p>
-              <p class="text-white/50 text-sm">Подготовка к ОГЭ</p>
-            </div>
-          </div>
-          <p class="text-white/75 leading-relaxed text-[15px] mb-4">Химию в школе не понимал вообще — тройки, ноль мотивации. Занимались 2 раза в неделю с ноября. К маю начал решать варианты на 4–5. Сдал ОГЭ на <strong class="text-brand-300">твёрдую пятёрку</strong>.</p>
-          <div class="inline-flex items-center gap-1.5 bg-teal-500/20 text-teal-300 font-bold text-sm px-3 py-1.5 rounded-full">
-            ОГЭ на «5»
-          </div>
-        </div>
-      </div>
-
-      <!-- Gallery row -->
-      <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="rounded-2xl overflow-hidden gallery-img shadow-[0_8px_24px_rgba(0,0,0,0.25)] relative h-44">
-          <img src="photos/main.jpg" alt="Назар на конференции" class="absolute inset-0 w-full h-full object-cover" style="object-position: center 15%">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-        </div>
-        <div class="rounded-2xl overflow-hidden gallery-img shadow-[0_8px_24px_rgba(0,0,0,0.25)] relative h-44">
-          <img src="photos/izotop.jpg" alt="Команда Изотоп" class="absolute inset-0 w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-        </div>
-        <div class="rounded-2xl overflow-hidden gallery-img shadow-[0_8px_24px_rgba(0,0,0,0.25)] relative h-44">
-          <img src="photos/flasks.jpg" alt="Лаборатория" class="absolute inset-0 w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-        </div>
-        <div class="rounded-2xl overflow-hidden gallery-img shadow-[0_8px_24px_rgba(0,0,0,0.25)] relative h-44">
-          <img src="photos/acid.jpg" alt="CH3COOH — химия" class="absolute inset-0 w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PRICING ============ -->
-  <section id="pricing" class="relative py-20 md:py-28 noise hex-bg overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-warm-100/80 via-warm-50 to-brand-50/30"></div>
-    <svg class="mol-deco text-teal-500 w-20 h-20 top-20 left-10 hidden lg:block float-slow"><use href="#ico-benzene"/></svg>
-    <svg class="mol-deco text-brand-400 w-28 h-28 bottom-12 right-8 hidden lg:block float-slow" style="animation-delay:-3s"><use href="#ico-flask"/></svg>
-    <svg class="mol-deco text-teal-400 w-16 h-16 top-[50%] right-[5%] hidden xl:block float-slow" style="animation-delay:-1s"><use href="#ico-atom"/></svg>
-    <svg class="mol-deco text-brand-300 w-14 h-28 bottom-[40%] left-[4%] hidden xl:block float-slow" style="animation-delay:-5s"><use href="#ico-tube"/></svg>
-
-    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-14 reveal">
-        <p class="text-teal-600 font-bold text-sm tracking-[0.2em] uppercase mb-3">Услуги и стоимость</p>
-        <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl text-deep-800 tracking-[-0.02em] font-bold">
-          Подготовка к любому формату
-        </h2>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="reveal card-lift bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-[0_4px_16px_rgba(45,62,54,0.06)] relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-teal-100/40 to-transparent rounded-bl-full"></div>
-          <div class="relative z-10">
-            <div class="w-13 h-13 bg-teal-50 rounded-xl flex items-center justify-center mb-5 w-[52px] h-[52px]">
-              <svg class="w-7 h-7 text-teal-600"><use href="#ico-flask"/></svg>
-            </div>
-            <h3 class="font-display text-2xl text-deep-800 mb-2 font-bold">ЕГЭ по химии</h3>
-            <p class="text-[15px] text-deep-600/70 leading-relaxed mb-5">Полная подготовка к ЕГЭ. Любой начальный уровень. 10–11 класс.</p>
-            <p class="font-display text-4xl text-deep-800 font-bold">1 300 <span class="text-lg font-body text-deep-600/50 font-semibold">₽/час</span></p>
-          </div>
-        </div>
-
-        <div class="reveal card-lift bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-[0_4px_16px_rgba(45,62,54,0.06)] relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-brand-100/40 to-transparent rounded-bl-full"></div>
-          <div class="relative z-10">
-            <div class="w-[52px] h-[52px] bg-brand-50 rounded-xl flex items-center justify-center mb-5">
-              <svg class="w-7 h-7 text-brand-500"><use href="#ico-benzene"/></svg>
-            </div>
-            <h3 class="font-display text-2xl text-deep-800 mb-2 font-bold">ОГЭ по химии</h3>
-            <p class="text-[15px] text-deep-600/70 leading-relaxed mb-5">Уверенная подготовка к ОГЭ. 9 класс. Системно и понятно.</p>
-            <p class="font-display text-4xl text-deep-800 font-bold">1 300 <span class="text-lg font-body text-deep-600/50 font-semibold">₽/час</span></p>
-          </div>
-        </div>
-
-        <div class="reveal card-lift bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-[0_4px_16px_rgba(45,62,54,0.06)] relative overflow-hidden sm:col-span-2 lg:col-span-1">
-          <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-teal-100/40 to-transparent rounded-bl-full"></div>
-          <div class="relative z-10">
-            <div class="w-[52px] h-[52px] bg-teal-50 rounded-xl flex items-center justify-center mb-5">
-              <svg class="w-7 h-7 text-teal-600"><use href="#ico-atom"/></svg>
-            </div>
-            <h3 class="font-display text-2xl text-deep-800 mb-2 font-bold">Олимпиады и ВПР</h3>
-            <p class="text-[15px] text-deep-600/70 leading-relaxed mb-5">Подготовка к олимпиадам и всероссийским проверочным работам.</p>
-            <p class="font-display text-4xl text-deep-800 font-bold">1 300 <span class="text-lg font-body text-deep-600/50 font-semibold">₽/час</span></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ ABOUT ============ -->
-  <section id="about" class="relative py-20 md:py-28 noise overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-warm-50 via-warm-100/60 to-warm-50"></div>
-    <svg class="mol-deco text-teal-600 w-28 h-28 top-10 right-16 hidden lg:block float-slow"><use href="#ico-molecule"/></svg>
-    <svg class="mol-deco text-brand-400 w-16 h-16 bottom-16 left-12 hidden lg:block float-slow" style="animation-delay:-3s"><use href="#ico-flask"/></svg>
-    <svg class="mol-deco text-teal-400 w-12 h-12 top-[55%] left-[6%] hidden xl:block float-slow" style="animation-delay:-1s"><use href="#ico-benzene"/></svg>
-
-    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="grid md:grid-cols-5 gap-12 md:gap-16 items-center">
-        <!-- Left: Photo (2 cols) -->
-        <div class="reveal relative md:col-span-2">
-          <div class="rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(45,62,54,0.14),0_4px_16px_rgba(45,62,54,0.06)]">
-            <img src="photos/main.jpg" alt="Назар — репетитор по химии" class="w-full h-auto object-cover" style="object-position: center 20%">
-            <div class="absolute inset-0 bg-gradient-to-t from-deep-900/40 via-transparent to-transparent rounded-3xl"></div>
-            <div class="absolute inset-0 bg-teal-700/5 mix-blend-multiply rounded-3xl"></div>
-          </div>
-          <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-brand-500 text-white font-extrabold text-[15px] px-6 py-2.5 rounded-full shadow-[0_8px_20px_rgba(212,135,46,0.35)] whitespace-nowrap">
-            5.0 ★ · 28 отзывов
-          </div>
-        </div>
-
-        <!-- Right: Bio text (3 cols) -->
-        <div class="reveal md:col-span-3">
-          <p class="text-teal-600 font-bold text-sm tracking-[0.2em] uppercase mb-3">Обо мне</p>
-          <h2 class="font-display text-5xl sm:text-6xl text-deep-800 tracking-[-0.02em] mb-8 font-bold">
-            Назар
-          </h2>
-
-          <div class="space-y-5 text-deep-600 leading-[1.8] text-[17px]">
-            <p>Привет! Я — химик по образованию (фундаменталка + прикладная химия). Уже <strong class="text-deep-800">больше пяти лет</strong> готовлю ребят к ОГЭ и ЕГЭ онлайн.</p>
-            <p>За это время выстроил <strong class="text-deep-800">свою систему</strong> — без воды, без зубрёжки. Только понимание, практика и контроль результата. Мои ученики стабильно сдают на 80+ баллов.</p>
-            <p>Работаю каждый день с 7 утра до 11 вечера. Отвечаю быстро. Если вы готовы вкладываться — я доведу до результата.</p>
-          </div>
-
-          <div class="mt-8 flex flex-wrap gap-3">
-            <span class="bg-teal-50 text-teal-700 text-[15px] font-semibold px-5 py-2.5 rounded-full border border-teal-200/50">Документы проверены</span>
-            <span class="bg-teal-50 text-teal-700 text-[15px] font-semibold px-5 py-2.5 rounded-full border border-teal-200/50">Самозанятый</span>
-            <span class="bg-teal-50 text-teal-700 text-[15px] font-semibold px-5 py-2.5 rounded-full border border-teal-200/50">Онлайн</span>
-            <span class="bg-brand-50 text-brand-700 text-[15px] font-semibold px-5 py-2.5 rounded-full border border-brand-200/50">Пн–Вс 07:00–23:00</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CTA ============ -->
-  <section id="cta" class="relative py-20 md:py-28 noise overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-warm-100 via-teal-50/20 to-warm-100"></div>
-    <svg class="mol-deco text-teal-500 w-24 h-24 top-12 right-20 hidden lg:block float-slow"><use href="#ico-atom"/></svg>
-    <svg class="mol-deco text-brand-400 w-20 h-20 bottom-16 left-16 hidden lg:block float-slow" style="animation-delay:-2s"><use href="#ico-flask"/></svg>
-
-    <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
-      <div class="reveal bg-white/80 backdrop-blur-sm rounded-3xl p-10 md:p-16 shadow-[0_24px_80px_rgba(45,62,54,0.1),0_8px_24px_rgba(45,62,54,0.06)] border border-teal-200/20">
-        <div class="inline-flex items-center gap-2 bg-teal-600/10 text-teal-700 text-[15px] font-bold px-5 py-2 rounded-full mb-6">
-          <span class="w-2 h-2 bg-teal-500 rounded-full animate-pulse"></span>
-          Бесплатная диагностика
-        </div>
-        <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl text-deep-800 tracking-[-0.02em] mb-5 font-bold">
-          Запишитесь на<br>диагностику
-        </h2>
-        <p class="text-deep-600/70 leading-[1.75] mb-8 max-w-lg mx-auto text-lg">
-          Напишите мне — разберём, где вы сейчас, что проседает, и составим конкретный план. Это бесплатно.
+        <p class="font-body text-fog-dim text-lg leading-relaxed mb-8 max-w-md anim-fade-up delay-2">
+          Готовлю к ЕГЭ и ОГЭ по химии с нуля до высокого балла. Понятно, системно, без зубрёжки. Онлайн и офлайн.
         </p>
 
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-          <a href="https://www.avito.ru/samara/predlozheniya_uslug/repetitor_po_himii_7880772211" target="_blank" class="btn-primary text-white font-bold text-lg px-10 rounded-full inline-flex items-center justify-center gap-2.5 py-[18px]">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <!-- CTA buttons -->
+        <div class="flex flex-wrap gap-4 mb-12 anim-fade-up delay-3">
+          <a href="https://www.avito.ru" target="_blank" rel="noopener" class="btn-neon px-8 py-3 text-base">
             Написать на Авито
           </a>
-          <a href="#" class="btn-outline text-brand-600 border-brand-500 font-bold text-lg px-10 rounded-full inline-flex items-center justify-center gap-2.5 py-[18px] hover:bg-brand-500 hover:text-white hover:border-brand-500">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <a href="#contact" class="btn-ghost px-8 py-3 text-base">
             Записаться сейчас
           </a>
         </div>
 
-        <p class="text-[15px] text-deep-600/50">Отвечаю в течение часа · Пн–Вс · 07:00–23:00</p>
+        <!-- Inline stats -->
+        <div class="flex gap-8 anim-fade-up delay-4">
+          <div>
+            <div class="font-display text-neon-DEFAULT leading-none" style="font-size: 2.5rem;">5+</div>
+            <div class="font-mono text-xs text-fog-muted mt-1">лет опыта</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div>
+            <div class="font-display text-fog-DEFAULT leading-none" style="font-size: 2.5rem;">100</div>
+            <div class="font-mono text-xs text-fog-muted mt-1">лучший балл ЕГЭ</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div>
+            <div class="font-display text-amber-hot leading-none" style="font-size: 2.5rem;">50+</div>
+            <div class="font-mono text-xs text-fog-muted mt-1">учеников 80+</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Photo -->
+      <div class="relative h-[320px] lg:h-auto lg:photo-clip scan-lines anim-fade-in delay-2">
+        <img
+          src="photos/main.jpg"
+          alt="Назар — репетитор по химии"
+          class="absolute inset-0 w-full h-full object-cover object-center"
+        >
+        <!-- Gradient overlay -->
+        <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(to right, #07090a 0%, transparent 20%), linear-gradient(to bottom, #07090a 0%, transparent 20%), linear-gradient(to top, #07090a 0%, transparent 30%), linear-gradient(135deg, rgba(0,229,160,0.06) 0%, transparent 50%);"></div>
+        <!-- Corner decoration -->
+        <div class="absolute bottom-6 right-6 font-mono text-xs text-neon-DEFAULT opacity-60 z-10">
+          <span>[ НАЗАР РЕПЕТИТОР ]</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+      <span class="font-mono text-xs text-fog-muted">scroll</span>
+      <div class="w-px h-8 bg-neon-DEFAULT opacity-60"></div>
+    </div>
+  </section>
+
+  <!-- MARQUEE TICKER -->
+  <div class="border-y border-surface-3 overflow-hidden py-3" style="background: #0e1412;">
+    <div class="flex whitespace-nowrap marquee-track">
+      <span class="font-mono text-xs text-fog-muted px-8">H<sub>2</sub>SO<sub>4</sub></span>
+      <span class="font-mono text-xs text-neon-DEFAULT px-8">// ЕГЭ 100 БАЛЛОВ</span>
+      <span class="font-mono text-xs text-fog-muted px-8">ОРГАНИЧЕСКАЯ ХИМИЯ</span>
+      <span class="font-mono text-xs text-amber-hot px-8">// 1300 ₽ / ЧАС</span>
+      <span class="font-mono text-xs text-fog-muted px-8">ТЕРМОХИМИЯ</span>
+      <span class="font-mono text-xs text-neon-DEFAULT px-8">// ПН–ВС 07:00–23:00</span>
+      <span class="font-mono text-xs text-fog-muted px-8">ЭЛЕКТРОХИМИЯ</span>
+      <span class="font-mono text-xs text-amber-hot px-8">// ОНЛАЙН И ОФЛАЙН</span>
+      <span class="font-mono text-xs text-fog-muted px-8">МЕНДЕЛЬЕВ</span>
+      <span class="font-mono text-xs text-neon-DEFAULT px-8">// NaCl + H<sub>2</sub>O →</span>
+      <span class="font-mono text-xs text-fog-muted px-8">РАДИОАКТИВНОСТЬ</span>
+      <span class="font-mono text-xs text-amber-hot px-8">// ЗАДАЧИ ЧАСТИ C</span>
+      <!-- duplicate for seamless loop -->
+      <span class="font-mono text-xs text-fog-muted px-8">H<sub>2</sub>SO<sub>4</sub></span>
+      <span class="font-mono text-xs text-neon-DEFAULT px-8">// ЕГЭ 100 БАЛЛОВ</span>
+      <span class="font-mono text-xs text-fog-muted px-8">ОРГАНИЧЕСКАЯ ХИМИЯ</span>
+      <span class="font-mono text-xs text-amber-hot px-8">// 1300 ₽ / ЧАС</span>
+      <span class="font-mono text-xs text-fog-muted px-8">ТЕРМОХИМИЯ</span>
+      <span class="font-mono text-xs text-neon-DEFAULT px-8">// ПН–ВС 07:00–23:00</span>
+      <span class="font-mono text-xs text-fog-muted px-8">ЭЛЕКТРОХИМИЯ</span>
+      <span class="font-mono text-xs text-amber-hot px-8">// ОНЛАЙН И ОФЛАЙН</span>
+      <span class="font-mono text-xs text-fog-muted px-8">МЕНДЕЛЬЕВ</span>
+      <span class="font-mono text-xs text-neon-DEFAULT px-8">// NaCl + H<sub>2</sub>O →</span>
+      <span class="font-mono text-xs text-fog-muted px-8">РАДИОАКТИВНОСТЬ</span>
+      <span class="font-mono text-xs text-amber-hot px-8">// ЗАДАЧИ ЧАСТИ C</span>
+    </div>
+  </div>
+
+  <!-- ABOUT / WHO AM I -->
+  <section class="py-24 relative" style="background: #07090a;">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <!-- Section header -->
+      <div class="flex items-center gap-4 mb-16">
+        <span class="font-display text-neon-DEFAULT" style="font-size: 5rem; line-height: 1; opacity: 0.25;">01</span>
+        <div>
+          <div class="section-label mb-1">// кто преподаёт</div>
+          <h2 class="font-display text-fog-DEFAULT leading-none" style="font-size: clamp(2.5rem, 6vw, 4.5rem);">О РЕПЕТИТОРЕ</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- Photo -->
+        <div class="relative">
+          <div class="relative overflow-hidden photo-treatment" style="aspect-ratio: 3/4; max-height: 560px;">
+            <img src="photos/main.jpg" alt="Назар" class="w-full h-full object-cover object-center">
+            <!-- Corner brackets -->
+            <div class="absolute top-4 left-4 w-8 h-8 border-t border-l border-neon-DEFAULT opacity-60 z-10"></div>
+            <div class="absolute top-4 right-4 w-8 h-8 border-t border-r border-neon-DEFAULT opacity-60 z-10"></div>
+            <div class="absolute bottom-4 left-4 w-8 h-8 border-b border-l border-neon-DEFAULT opacity-60 z-10"></div>
+            <div class="absolute bottom-4 right-4 w-8 h-8 border-b border-r border-neon-DEFAULT opacity-60 z-10"></div>
+          </div>
+          <!-- Tag -->
+          <div class="absolute -bottom-4 -right-4 bg-surface-2 border border-surface-3 px-4 py-2 font-mono text-xs text-fog-muted">
+            <span class="text-neon-DEFAULT">●</span> Rosatom Conference, 2025
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div>
+          <h3 class="font-display text-fog-DEFAULT mb-2" style="font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1;">
+            НАЗАР
+          </h3>
+          <div class="font-mono text-neon-DEFAULT text-sm mb-8">репетитор по химии · 5+ лет</div>
+
+          <div class="space-y-6 text-fog-dim leading-relaxed">
+            <p>
+              Я верю, что химию может понять каждый — нужен лишь правильный подход.
+              За 5 лет работы я выработал систему, которая превращает самый запутанный материал
+              в понятную логику.
+            </p>
+            <p>
+              Участник и призёр профессиональных конференций, в том числе мероприятий Росатома
+              и Радиевого института. Работаю с учениками любого уровня подготовки — от нуля
+              до олимпийских высот.
+            </p>
+            <p>
+              Мои ученики сдают ЕГЭ на 80–100 баллов. Не потому что зубрят, а потому что
+              <span class="text-fog-DEFAULT font-500">по-настоящему понимают химию</span>.
+            </p>
+          </div>
+
+          <!-- Credentials -->
+          <div class="mt-10 grid grid-cols-2 gap-4">
+            <div class="card-dark p-4">
+              <div class="font-mono text-xs text-fog-muted mb-1">// специализация</div>
+              <div class="font-condensed font-600 text-fog-DEFAULT">ЕГЭ / ОГЭ / Олимпиады</div>
+            </div>
+            <div class="card-dark p-4">
+              <div class="font-mono text-xs text-fog-muted mb-1">// формат</div>
+              <div class="font-condensed font-600 text-fog-DEFAULT">Онлайн и офлайн</div>
+            </div>
+            <div class="card-dark p-4">
+              <div class="font-mono text-xs text-fog-muted mb-1">// стоимость</div>
+              <div class="font-condensed font-600 text-amber-hot">1 300 ₽ / час</div>
+            </div>
+            <div class="card-dark p-4">
+              <div class="font-mono text-xs text-fog-muted mb-1">// расписание</div>
+              <div class="font-condensed font-600 text-fog-DEFAULT">Пн–Вс 07:00–23:00</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="bg-deep-800 py-12 noise">
-    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="flex items-center gap-2.5">
-          <svg class="w-7 h-7 text-teal-400"><use href="#ico-flask"/></svg>
-          <span class="font-display text-xl text-warm-200 font-bold">ХимияПро</span>
+  <!-- STATS BAR -->
+  <div class="py-12 border-y border-surface-3 relative overflow-hidden" style="background: #0e1412;">
+    <div class="absolute inset-0 grid-bg opacity-50"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="font-display neon-text leading-none mb-2" style="font-size: 4rem;">5+</div>
+          <div class="font-condensed font-600 text-fog-DEFAULT uppercase tracking-widest text-sm">Лет опыта</div>
         </div>
-        <p class="text-warm-200/50 text-[15px]">Назар · Репетитор по химии · Самара · Онлайн</p>
-        <p class="text-warm-200/30 text-sm">&copy; 2025</p>
+        <div class="text-center">
+          <div class="font-display text-fog-DEFAULT leading-none mb-2" style="font-size: 4rem;">100</div>
+          <div class="font-condensed font-600 text-fog-DEFAULT uppercase tracking-widest text-sm">Лучший балл ЕГЭ</div>
+        </div>
+        <div class="text-center">
+          <div class="font-display amber-text leading-none mb-2" style="font-size: 4rem;">50+</div>
+          <div class="font-condensed font-600 text-fog-DEFAULT uppercase tracking-widest text-sm">Учеников 80+</div>
+        </div>
+        <div class="text-center">
+          <div class="font-display text-fog-DEFAULT leading-none mb-2" style="font-size: 4rem; color: #e2ebe8;">1300</div>
+          <div class="font-condensed font-600 text-fog-DEFAULT uppercase tracking-widest text-sm">₽ за занятие</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- METHOD -->
+  <section id="method" class="py-24 relative" style="background: #07090a;">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <!-- Section header -->
+      <div class="flex items-center gap-4 mb-16">
+        <span class="font-display text-amber-hot" style="font-size: 5rem; line-height: 1; opacity: 0.2;">02</span>
+        <div>
+          <div class="section-label mb-1">// как устроены занятия</div>
+          <h2 class="font-display text-fog-DEFAULT leading-none" style="font-size: clamp(2.5rem, 6vw, 4.5rem);">КАК УСТРОЕНЫ<br>ЗАНЯТИЯ</h2>
+        </div>
+      </div>
+
+      <!-- Method grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Card 1 -->
+        <div class="card-dark relative overflow-hidden group">
+          <div class="relative h-56 overflow-hidden">
+            <img src="photos/slide.jpg" alt="ОВР — метод обучения" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(7,9,10,0.1) 0%, rgba(7,9,10,0.7) 100%);"></div>
+            <div class="absolute top-4 left-4 font-mono text-xs text-neon-DEFAULT bg-ink-900 bg-opacity-80 px-2 py-1">[ 01 / 04 ]</div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-fog-DEFAULT mb-3" style="font-size: 1.8rem; line-height: 1.1;">ОБЪЯСНЯЮ ЧЕРЕЗ ЛОГИКУ</h3>
+            <p class="font-body text-fog-dim leading-relaxed text-sm">
+              Никакой зубрёжки. Показываю почему реакции идут именно так — через электронные конфигурации,
+              степени окисления, химическую логику. Один раз понял — запомнил навсегда.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card-dark relative overflow-hidden group">
+          <div class="relative h-56 overflow-hidden">
+            <img src="photos/flasks.jpg" alt="Лабораторная работа" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(7,9,10,0.1) 0%, rgba(7,9,10,0.7) 100%);"></div>
+            <div class="absolute top-4 left-4 font-mono text-xs text-neon-DEFAULT bg-ink-900 bg-opacity-80 px-2 py-1">[ 02 / 04 ]</div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-fog-DEFAULT mb-3" style="font-size: 1.8rem; line-height: 1.1;">ПРАКТИКА С ПЕРВОГО ДНЯ</h3>
+            <p class="font-body text-fog-dim leading-relaxed text-sm">
+              Сразу решаем задачи — реальные задания ЕГЭ, разборы ошибок, работа с формулами.
+              Теория без практики не работает — мы это знаем.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card-dark relative overflow-hidden group">
+          <div class="relative h-56 overflow-hidden">
+            <img src="photos/students.jpg" alt="Ученики в лаборатории" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(7,9,10,0.1) 0%, rgba(7,9,10,0.7) 100%);"></div>
+            <div class="absolute top-4 left-4 font-mono text-xs text-neon-DEFAULT bg-ink-900 bg-opacity-80 px-2 py-1">[ 03 / 04 ]</div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-fog-DEFAULT mb-3" style="font-size: 1.8rem; line-height: 1.1;">ИНДИВИДУАЛЬНЫЙ ТЕМП</h3>
+            <p class="font-body text-fog-dim leading-relaxed text-sm">
+              Каждый ученик уникален. Выстраиваю программу под твой уровень и цель:
+              ОГЭ на 5, ЕГЭ 80+ или поступление в медицинский. Без лишнего материала.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card-dark relative overflow-hidden group">
+          <div class="relative h-56 overflow-hidden">
+            <img src="photos/izotop.jpg" alt="Изотоп — команда по химии" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(7,9,10,0.1) 0%, rgba(7,9,10,0.7) 100%);"></div>
+            <div class="absolute top-4 left-4 font-mono text-xs text-neon-DEFAULT bg-ink-900 bg-opacity-80 px-2 py-1">[ 04 / 04 ]</div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-fog-DEFAULT mb-3" style="font-size: 1.8rem; line-height: 1.1;">РЕАЛЬНАЯ НАУКА</h3>
+            <p class="font-body text-fog-dim leading-relaxed text-sm">
+              Я сам участвую в научных проектах и конференциях. Показываю, как школьная
+              химия связана с реальными открытиями — это делает её живой и интересной.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS / STUDENT STORIES -->
+  <section id="results" class="py-24 relative" style="background: #0e1412;">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <!-- Section header -->
+      <div class="flex items-center gap-4 mb-16">
+        <span class="font-display text-neon-DEFAULT" style="font-size: 5rem; line-height: 1; opacity: 0.2;">03</span>
+        <div>
+          <div class="section-label mb-1">// результаты 2025</div>
+          <h2 class="font-display text-fog-DEFAULT leading-none" style="font-size: clamp(2.5rem, 6vw, 4.5rem);">РЕЗУЛЬТАТЫ<br>2025</h2>
+        </div>
+      </div>
+
+      <!-- Stories grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Story 1 -->
+        <div class="card-dark p-6 relative">
+          <div class="flex items-start justify-between mb-6">
+            <div class="w-12 h-12 rounded-none border border-neon-DEFAULT flex items-center justify-center font-display text-neon-DEFAULT text-2xl">А</div>
+            <div class="text-right">
+              <div class="font-display text-neon-DEFAULT" style="font-size: 2.5rem; line-height: 1;">91</div>
+              <div class="font-mono text-xs text-fog-muted">баллов ЕГЭ</div>
+            </div>
+          </div>
+          <h4 class="font-condensed font-700 text-fog-DEFAULT text-lg uppercase tracking-wide mb-2">Алина, 11 класс</h4>
+          <p class="font-body text-fog-dim text-sm leading-relaxed mb-4">
+            Пришла в сентябре с нулём по органике. Первые два месяца было сложно —
+            но Назар объяснял так, что всё вставало на место. На пробном в феврале —
+            78 баллов. На реальном ЕГЭ — 91. Поступила в РНИМУ.
+          </p>
+          <div class="font-mono text-xs text-fog-muted border-t border-surface-3 pt-4">
+            <span class="text-neon-DEFAULT">→</span> РНИМУ им. Пирогова, медицинский факультет
+          </div>
+        </div>
+
+        <!-- Story 2 -->
+        <div class="card-dark p-6 relative">
+          <div class="flex items-start justify-between mb-6">
+            <div class="w-12 h-12 rounded-none border border-amber-hot flex items-center justify-center font-display text-amber-hot text-2xl">М</div>
+            <div class="text-right">
+              <div class="font-display text-amber-hot" style="font-size: 2.5rem; line-height: 1;">87</div>
+              <div class="font-mono text-xs text-fog-muted">баллов ЕГЭ</div>
+            </div>
+          </div>
+          <h4 class="font-condensed font-700 text-fog-DEFAULT text-lg uppercase tracking-wide mb-2">Михаил, 11 класс</h4>
+          <p class="font-body text-fog-dim text-sm leading-relaxed mb-4">
+            Хотел поступить на фармацевтику, но химия была огромным пробелом.
+            За 4 месяца занятий прошли весь курс системно. Особенно помогли
+            разборы задач из части C — именно там и набрал баллы.
+          </p>
+          <div class="font-mono text-xs text-fog-muted border-t border-surface-3 pt-4">
+            <span class="text-amber-hot">→</span> Первый МГМУ им. Сеченова, фармацевтика
+          </div>
+        </div>
+
+        <!-- Story 3 -->
+        <div class="card-dark p-6 relative">
+          <div class="flex items-start justify-between mb-6">
+            <div class="w-12 h-12 rounded-none border border-fog-muted flex items-center justify-center font-display text-fog-DEFAULT text-2xl">С</div>
+            <div class="text-right">
+              <div class="font-display text-fog-DEFAULT" style="font-size: 2.5rem; line-height: 1;">100</div>
+              <div class="font-mono text-xs text-fog-muted">баллов ЕГЭ</div>
+            </div>
+          </div>
+          <h4 class="font-condensed font-700 text-fog-DEFAULT text-lg uppercase tracking-wide mb-2">Соня, 11 класс</h4>
+          <p class="font-body text-fog-dim text-sm leading-relaxed mb-4">
+            Шла на олимпиаду, параллельно готовилась к ЕГЭ. Назар выстроил
+            программу так, что одно дополняло другое. Стала призёром олимпиады
+            «Ломоносов» и получила 100 на ЕГЭ.
+          </p>
+          <div class="font-mono text-xs text-fog-muted border-t border-surface-3 pt-4">
+            <span class="text-fog-DEFAULT">→</span> МГУ, химический факультет, бюджет
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom note -->
+      <div class="mt-10 flex items-center gap-4 text-fog-muted font-mono text-xs">
+        <div class="w-2 h-2 bg-neon-DEFAULT rounded-full" style="box-shadow: 0 0 8px rgba(0,229,160,0.6);"></div>
+        50+ учеников набрали 80+ баллов в 2024–2025 учебном году
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="py-24 relative" style="background: #07090a;">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="flex items-center gap-4 mb-12">
+        <span class="font-display text-fog-muted" style="font-size: 5rem; line-height: 1; opacity: 0.15;">04</span>
+        <div>
+          <div class="section-label mb-1">// фотоматериалы</div>
+          <h2 class="font-display text-fog-DEFAULT leading-none" style="font-size: clamp(2rem, 5vw, 3.5rem);">ГАЛЕРЕЯ</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <div class="relative overflow-hidden group" style="aspect-ratio: 3/4;">
+          <img src="photos/main.jpg" alt="Назар" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background: rgba(0,229,160,0.08);"></div>
+          <!-- Corner brackets on hover -->
+          <div class="absolute top-3 left-3 w-6 h-6 border-t border-l border-neon-DEFAULT opacity-0 group-hover:opacity-80 transition-opacity z-10"></div>
+          <div class="absolute bottom-3 right-3 w-6 h-6 border-b border-r border-neon-DEFAULT opacity-0 group-hover:opacity-80 transition-opacity z-10"></div>
+        </div>
+        <div class="relative overflow-hidden group" style="aspect-ratio: 3/4;">
+          <img src="photos/izotop.jpg" alt="Команда Изотоп" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background: rgba(0,229,160,0.08);"></div>
+          <div class="absolute top-3 left-3 w-6 h-6 border-t border-l border-neon-DEFAULT opacity-0 group-hover:opacity-80 transition-opacity z-10"></div>
+          <div class="absolute bottom-3 right-3 w-6 h-6 border-b border-r border-neon-DEFAULT opacity-0 group-hover:opacity-80 transition-opacity z-10"></div>
+        </div>
+        <div class="relative overflow-hidden group" style="aspect-ratio: 3/4;">
+          <img src="photos/flasks.jpg" alt="Химические колбы" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background: rgba(0,229,160,0.08);"></div>
+          <div class="absolute top-3 left-3 w-6 h-6 border-t border-l border-neon-DEFAULT opacity-0 group-hover:opacity-80 transition-opacity z-10"></div>
+          <div class="absolute bottom-3 right-3 w-6 h-6 border-b border-r border-neon-DEFAULT opacity-0 group-hover:opacity-80 transition-opacity z-10"></div>
+        </div>
+        <div class="relative overflow-hidden group" style="aspect-ratio: 3/4;">
+          <img src="photos/acid.jpg" alt="Кислота CH₃COOH" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background: rgba(0,229,160,0.08);"></div>
+          <div class="absolute top-3 left-3 w-6 h-6 border-t border-l border-neon-DEFAULT opacity-0 group-hover:opacity-80 transition-opacity z-10"></div>
+          <div class="absolute bottom-3 right-3 w-6 h-6 border-b border-r border-neon-DEFAULT opacity-0 group-hover:opacity-80 transition-opacity z-10"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / CONTACT -->
+  <section id="contact" class="py-24 relative overflow-hidden" style="background: #0e1412;">
+    <div class="absolute inset-0 grid-bg opacity-60"></div>
+    <!-- Glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(0,229,160,0.07) 0%, transparent 70%);"></div>
+
+    <div class="max-w-3xl mx-auto px-6 text-center relative z-10">
+
+      <div class="section-label mb-4">// начать занятия</div>
+
+      <h2 class="font-display text-fog-DEFAULT leading-none mb-6" style="font-size: clamp(3rem, 8vw, 6rem);">
+        ГОТОВ<br>НАЧАТЬ?
+      </h2>
+
+      <p class="font-body text-fog-dim text-lg leading-relaxed mb-10 max-w-xl mx-auto">
+        Напишите прямо сейчас — обсудим цели, уровень и составим план подготовки.
+        Первый урок покажет, подходит ли вам этот формат.
+      </p>
+
+      <!-- Contact info bar -->
+      <div class="flex flex-wrap justify-center gap-6 mb-10 font-mono text-sm text-fog-muted">
+        <span><span class="text-neon-DEFAULT">$</span> пн–вс 07:00–23:00</span>
+        <span><span class="text-neon-DEFAULT">$</span> 1 300 ₽ / час</span>
+        <span><span class="text-neon-DEFAULT">$</span> онлайн и офлайн</span>
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://www.avito.ru" target="_blank" rel="noopener" class="btn-neon px-10 py-4 text-lg">
+          Написать на Авито
+        </a>
+        <a href="#" class="btn-ghost px-10 py-4 text-lg">
+          Записаться сейчас
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-8 border-t border-surface-3" style="background: #07090a;">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-5 h-5 border border-neon-DEFAULT flex items-center justify-center">
+          <span class="font-display text-neon-DEFAULT text-xs leading-none">N</span>
+        </div>
+        <span class="font-mono text-xs text-fog-muted">Назар // репетитор по химии</span>
+      </div>
+      <div class="font-mono text-xs text-fog-muted">
+        <span class="text-neon-DEFAULT">©</span> 2025 — все права защищены
       </div>
     </div>
   </footer>
-
-  <!-- ============ SCROLL REVEAL ============ -->
-  <script>
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    reveals.forEach(el => observer.observe(el));
-  </script>
 
 </body>
 </html>
